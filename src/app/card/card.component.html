@@ -1,0 +1,7 @@
+<mat-card [ngClass]="size">
+  <ng-content select="header"></ng-content>
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+  <ng-content select="footer"></ng-content>
+</mat-card>

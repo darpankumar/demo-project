@@ -1,0 +1,15 @@
+.container > *{
+
+    width: 100%;
+    padding: 10px;
+}
+
+.pointer {
+
+    cursor: pointer;
+}
+
+.error {
+
+    color: red;
+}

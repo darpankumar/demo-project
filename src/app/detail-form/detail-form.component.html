@@ -1,0 +1,31 @@
+<app-card [title]='test-app' [size] ='test-card'>
+  <div header><h1>Test App Header</h1></div>
+  <div *ngIf="emailPasswordRequire" class="error">Email & password is required field</div>
+  <div *ngIf="emailRequire" class="error" >Email is required field</div>
+  <div *ngIf="passwordRequire" class="error" >Password is required field</div>
+  <div *ngIf="emailAdress.length>0 && emailRef.touched && !emailRef.valid" [ngClass]="['error']">Please enter valid email.</div>
+  <div *ngIf="password.length>0 && passwordRef.touched && !passwordRef.valid" [ngClass]="['error']">Password must be 8 character long with at least one character and one special character.</div>   
+<div class="container">
+  <mat-form-field hintLabel="Email*">    
+    <input matInput id="user-email" (input)="emailChange()" type="text" [(ngModel)]="emailAdress" name="emailRef" pattern="^(([a-zA-Z&]|[0-9])|([-]|[_]|[.]|[']))+[@](([a-zA-Z0-9])|([-])){1,63}([.](([a-zA-Z0-9-&'_]){2,63})+){1,6}$"
+    #emailRef="ngModel" required>     
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select Subscription" [(ngModel)]='selectedSubscription'>
+      <mat-option value="Advanced">Advanced</mat-option>
+      <mat-option value="Basic">Basic</mat-option>
+      <mat-option value="Pro">Pro</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field hintLabel="Password*">    
+      <input matInput id="user-password" (input)="passwordChange()" type="text" [(ngModel)]="password" name="passwordRef" pattern="^(?=.*[a-zA-Z])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,}$"
+      #passwordRef="ngModel" required>    
+    </mat-form-field>
+
+    <button class="pointer" (click)="submitClick(emailRef, passwordRef)">Submit</button>
+    <button class="pointer" (click)="cancleClick()">Clear</button>
+</div>
+<div footer><h1>Test App footer</h1></div>
+</app-card>
